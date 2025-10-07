@@ -1,0 +1,39 @@
+# Dépendances
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Build output local (sera reconstruit dans l'image)
+dist
+
+# Config & fichiers spécifiques à l'éditeur
+.vscode
+.idea
+
+# Git
+.git
+.gitignore
+
+# OS / Temp files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Docker
+docker-compose*.yml
+Dockerfile*
+
+# Tests & coverage
+coverage
+test-results
+*.spec.ts
+*.test.ts
+
+# Environnements locaux
+.env
+.env.local
+.env.development
+.env.test

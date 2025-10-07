@@ -1,0 +1,13 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: nest-backend-prod
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "4000:3000"
+    restart: unless-stopped
+
+# docker-compose -f docker-compose.prod.yml up -d

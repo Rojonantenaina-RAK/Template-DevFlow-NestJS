@@ -19,8 +19,8 @@
 {
   "scripts": {
     "test": "jest",
-    "test:unit": "jest --runTestsByPath \"src/**/*.spec.ts\" --testPathIgnorePatterns=e2e",
-    "test:integration": "jest --runTestsByPath \"src/**/*.integration.spec.ts\"",
+    "test:unit": "jest --testMatch '**/?(*.)+(?<!integration).spec.ts'",
+    "test:integration": "jest --runTestsByPath \"src/**/*.spec.ts\" --testPathIgnorePatterns=integration",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage"
@@ -32,9 +32,35 @@
 ```bash
 git clone https://github.com/Rojonantenaina-RAK/Template-DevFlow-NestJS
 
-# Change the name of this project to yours
+# tu peux changer le nom de ce dossier "Template-DevFlow-NestJS" en nom de ton projet , ainsi que le contenu de package.json {"name": "<nom-de-ton-projet>"}
 
 cd Template-DevFlow-NestJS
 
 npm install
 ```
+
+## Comment lancer ton app
+```
+docker compose up -d
+```
+- Tu pourras l'accéder sur [http://localhost:4000](http://localhost:4000) et **les changements se feront en temps réel lorsque tu modifies ton code** 🎉
+
+<br/>
+
+- Pour arrêter ton backend :
+    ```
+    docker compose down
+    ```
+
+<br/>
+
+- ⚠️<u>**NB**</u> : Tu modifies ton code, les changements s'appliqueront à volonté, 🔴mais si tu installes une ou plusieurs nouvelles dépendances dans ton projet, il est obligatoire de lancer la commande
+    ```bash
+    docker compose exec backend cd /app && npm install # "backend" est le nom du service déclaré dans docker-compose.yml
+    ```
+    - ou alternativement, rebuilder l'image docker
+    ```bash
+    docker compose down #puis,
+    docker compose up -d
+    ```
+    
